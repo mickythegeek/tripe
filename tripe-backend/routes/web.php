@@ -8,4 +8,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin/login', [AdminController::class, 'login'])->name('admin_login');
+
+Route::prefix('admin')->group(function(){
+    Route::get('/login', [AdminController::class, 'login'])->name('admin_login');
+
+Route::post('/login_submit', [AdminController::class, 'login_submit'])->name('admin_login_submit');
+});

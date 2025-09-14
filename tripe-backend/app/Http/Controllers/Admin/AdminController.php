@@ -11,4 +11,13 @@ class AdminController extends Controller
     {
         return view('admin.admin_login');
     }
+    // End method
+
+    public function login_submit(Request $request)
+    {
+        dd($request->all());
+    }
+    //End method
+
 }
+

@@ -35,13 +35,15 @@
                                             </a> Please enter your credentials to login.</p>
                                 </div>
                                 <div class="p-4">
-                                    <form>
+                                    <form action="{{route('admin_login_submit')}}" method="POST">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="username">Username <span
                                                     class="text-danger">*</span></label>
                                             <input type="text"
                                                 class="form-control"
                                                 id="username"
+                                                name="username"
                                                 placeholder="Enter username"
                                                 required>
                                         </div>
@@ -52,6 +54,7 @@
                                             <input type="password"
                                                 class="form-control"
                                                 id="userpassword"
+                                                name="password"
                                                 placeholder="Enter password"
                                                 required>
                                             <p>
