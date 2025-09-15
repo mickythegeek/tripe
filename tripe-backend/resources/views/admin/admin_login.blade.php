@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renol</title>
+    <title>Tripe - Admin Login</title>
     <link rel="icon" type="images/x-icon" href="{{asset('backend/assets/images/favicon.ico')}}">
     <!-- remix icon  -->
     <link rel="stylesheet" href=" {{asset('backend/assets/css/remixicon.css')}} ">
