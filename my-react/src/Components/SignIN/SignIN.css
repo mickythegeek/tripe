@@ -1,0 +1,138 @@
+
+body {
+    background-color: #CBD5E1;
+    margin: 0;
+    padding: 0;
+}
+
+.SignIN{
+    background-color: #CBD5E1;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-self: center;
+    
+    
+
+} 
+h3{
+    text-align: center;
+    font-size: 36px;
+    margin: 0px;
+    color: #1E293B;
+}
+p{
+    text-align: center;
+    font-size: 16px;
+    margin: 0px;
+    color: #475569;
+}
+form{
+    margin-top: 50px;
+    
+}
+
+.inputwrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 10px;
+    gap: 0.5rem;
+    margin-bottom: 20px;
+}
+
+.inputwrapper input {
+    flex: 1;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+}
+.options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.SignInBTN{
+    text-decoration: none;
+}
+.BTN1{
+    display: flex;
+    justify-content: center;
+    justify-self: stretch;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4F46E5;
+    color: white;
+    align-items: center;
+    align-self: center;
+}
+.BTN1:hover{
+    background-color: white;
+    color: #4F46E5;
+    cursor: pointer;
+}
+.signuptext{
+    color: #1E293B;
+    padding-top: 20px;
+    gap: 2px;
+}
+.signuptext span{
+    color: #4F46E5;
+    cursor: pointer;
+}
+.hrwithtext {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    margin: 24px 0;
+}
+
+.hrwithtext hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid black;
+}
+
+.hrwithtext span {
+    color: #888;
+    font-weight: 500;
+    padding: 0 12px;
+    white-space: nowrap;
+}
+.socialmedia{
+    display: grid;
+    gap: 10px;
+
+}
+.socialmedia button{
+    display: flex;
+    justify-content: center;
+    justify-self: stretch;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    align-items: center;
+    align-self: center;
+    gap: 10px;
+    
+}
+.socialmedia button:hover{
+    background-color: #4F46E5;
+    color: white;
+    cursor: pointer;
+}
