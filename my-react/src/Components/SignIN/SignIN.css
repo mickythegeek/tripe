@@ -135,4 +135,50 @@ form{
     background-color: #4F46E5;
     color: white;
     cursor: pointer;
+
+}
+
+    
+.footer hr{
+    margin-top: 20px;
+}
+.footercontent{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+     padding: 0px 20px 0px 20px;
+} 
+.footercontent p{
+    display: flex;
+}
+.footerlinks{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.footerlinks p{
+    color: #4F46E5;
+}
+.footerlinks p:hover{
+    color: white;
+    cursor: pointer;
+}
+.copyright{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 5px;
+}
+@media screen and (max-width: 600px) {
+    .SignIN{
+        width: 90%;
+    }
+    .footercontent{
+    margin:  0px auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+} 
 }
