@@ -41,12 +41,16 @@ class AdminController extends Controller
             return redirect()->route('admin_login')->with('error','Invalid credentials. Please try again!');
         }
 
-
-
-
     }
     //End method
 
+    public function admin_logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin_login')->with('success', 'You logged out successfully, Admin!');
+
+    }
+    //End method
     
 }
 
