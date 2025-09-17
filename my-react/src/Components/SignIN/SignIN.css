@@ -15,6 +15,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 400px;
+  /* or any value you prefer */
+  width: 100%;
+  margin: 0 auto;
 }
 
 .logo {

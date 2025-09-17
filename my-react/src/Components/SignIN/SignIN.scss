@@ -11,6 +11,9 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
+    max-width: 400px;    /* or any value you prefer */
+   width: 100%;
+   margin: 0 auto;
 }
 .logo{
     display: flex;

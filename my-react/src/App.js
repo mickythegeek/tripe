@@ -14,7 +14,7 @@ function App() {
       <header className="App-header">
         <BrowserRouter>
         <Routes>
-          <Route path="/SignIN" element={<SignIN />} />
+          <Route path="/" element={<SignIN />} />
           <Route path="/SignUP" element={<SignUP />} />
         </Routes>
         </BrowserRouter>

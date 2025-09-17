@@ -1,0 +1,116 @@
+body {
+  background-color: #CBD5E1;
+  margin: 0;
+  padding: 0;
+}
+
+.SignUp {
+  background-color: #CBD5E1;
+  margin: 0 auto;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 400px;
+  /* or any value you prefer */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.SignUp h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 49px;
+}
+
+.SignUp .password-strength-bar.weak {
+  border-bottom-color: #f87171;
+}
+
+.SignUp .password-strength-bar.medium {
+  border-bottom-color: #fbbf24;
+}
+
+.SignUp .password-strength-bar.strong {
+  border-bottom-color: #16a34a;
+}
+
+.SignUp .password-strength {
+  color: #16a34a;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.95rem;
+  margin-top: 4px;
+  font-weight: 500;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.SignUp .password-strength-dashes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.SignUp .password-strength-dashes span {
+  display: block;
+  width: 90px;
+  height: 6px;
+  border-radius: 4px;
+  background: #e5e7eb;
+  -webkit-transition: background 0.3s;
+  transition: background 0.3s;
+}
+
+.SignUp .password-strength-dashes .weak {
+  background: #f87171;
+}
+
+.SignUp .password-strength-dashes .medium {
+  background: #fbbf24;
+}
+
+.SignUp .password-strength-dashes .strong {
+  background: #16a34a;
+}
+
+@media (max-width: 763px) {
+  .SignUp {
+    width: 90%;
+  }
+  .SignUp h3 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .SignUp {
+    width: 90%;
+  }
+  .SignUp h3 {
+    font-size: 20px;
+  }
+  .footercontent {
+    margin: 0px auto;
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+/*# sourceMappingURL=SignUp.css.map */
