@@ -38,7 +38,6 @@
                                     </p>
 
                                     @if (session('success'))
-                                        {
                                         <div class="alert alert-success" style="width: 410px">
                                             <div class="alert-content">
                                                 <span class="alert-icon">
@@ -53,7 +52,6 @@
                                                 <div> {{ (session('success')) }} </div>
                                             </div>
                                         </div>
-                                        }
                                     @endif
 
                                     @if (session('error'))
@@ -131,7 +129,7 @@
                                             </button> --}}
                                         </div>
                                         <div class="mt-4 mb-0 text-center">
-                                            <a href="reset.html" class="text-primary fw-semibold"><i
+                                            <a href="{{route('admin_forgot_password')}}" class="text-primary fw-semibold"><i
                                                     class="ri-lock-fill"></i>
                                                 Forgot
                                                 your password?</a>
