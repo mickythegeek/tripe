@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('backend/dash-assets/images/favicon.ico') }}">
-    <title>LMGAS | Laravel 11 Multi-Guard Auth System</title>
+    <title>Tripe | Administrator Dashboard</title>
 
     <!-- Core CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('backend/dash-assets/css/style.css') }}">
@@ -130,8 +130,8 @@
 												<span class="avatar avatar-circle" data-avatar-size="32" style="width: 32px">
 												<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy" alt=""></span>
 												<div class="hidden md:block">
-													<div class="text-xs capitalize">admin</div>
-													<div class="font-bold">Carolyn Perkins</div>
+													<div class="text-xs capitalize">Super Admin</div>
+													<div class="font-bold">{{Auth::guard('admin')->user()->username}}</div>
 												</div>
 											</div>
 										</div>
@@ -142,8 +142,8 @@
 														<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy" alt="">
 													</span>
 													<div>
-														<div class="font-bold text-gray-900 dark:text-gray-100">Carolyn Perkins</div>
-														<div class="text-xs">carolyn.p@elstar.com</div>
+														<div class="font-bold text-gray-900 dark:text-gray-100">{{Auth::guard('admin')->user()->username}}</div>
+														<div class="text-xs">{{Auth::guard('admin')->user()->email}}</div>
 													</div>
 												</div>
 											</li>
@@ -190,8 +190,8 @@
                                                     <img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy">
                                                 </span>
                                                 <!-- <img src="{{ asset('backend/dash-assets/img/others/Laravel.png') }}" alt="Laravel Logo" class="mx-auto mb-8" style="width: 200px;"> -->
-                                                <h3 class="mb-2">Admin</h3>
-                                                <p class="text-base">user@example.come</p>
+                                                <h3 class="mb-2">{{Auth::guard('admin')->user()->username}}</h3>
+                                                <p class="text-base">{{Auth::guard('admin')->user()->email}}</p>
                                                
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@
 							<!-- Footer start -->
 							<footer class="footer flex flex-auto items-center h-16 px-4 sm:px-6 md:px-8">
 								<div class="flex items-center justify-between flex-auto w-full">
-									<span>Copyright © 2023 <span class="font-semibold">Mjnamadi</span> All rights reserved.</span>
+									<span>Copyright © 2025 <span class="font-semibold">Tripe | Your One Stop Bot</span> All rights reserved.</span>
 									<div>
 										<a class="text-gray" href="#">Term &amp; Conditions</a>
 										<span class="mx-2 text-muted"> | </span>
