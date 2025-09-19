@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\ResetPassword;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -56,6 +59,38 @@ class AdminController extends Controller
     {
         return view('admin.admin_forgot_password');
     }
-    
+    //End Method
+
+    public function forgot_password_submit(Request $request)
+    {
+        
+        $request->validate([
+            'email' => ['required', 'email']
+        ]);
+
+        $admin = Admin::where('email', $request->email)->first();
+
+        if (!$admin)
+        {
+            return redirect()->back()->with('error', 'Sorry, Champ! The email you provided is not recognized.');
+        }
+
+        $token = hash('sha256', time());
+        $admin->token = $token;
+        $admin->update();
+
+        $pwdResetLink = url('admin/password-reset/' . $token . $request->email);
+        $subject = "Password Reset";
+
+        $info = [
+            'user'=> $admin['username'],
+            'pwdResetLink' => $pwdResetLink
+        ];
+
+        Mail::to($request->email)->send(new ResetPassword($subject, $info));
+
+        return redirect()->back()->with('success', "A password reset link has been sent to your inbox. Make sure to check your spam too.");
+
+}
 }
 
