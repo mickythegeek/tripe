@@ -95,6 +95,11 @@ form {
   margin-bottom: 20px;
 }
 
+.options a {
+  text-decoration: none;
+  color: #4F46E5;
+}
+
 .SignInBTN {
   text-decoration: none;
 }
@@ -129,6 +134,10 @@ form {
   color: #1E293B;
   padding-top: 20px;
   gap: 2px;
+}
+
+.signuptext a {
+  text-decoration: none;
 }
 
 .signuptext span {

@@ -86,7 +86,7 @@ function SignUP() {
               <input type="checkbox" /> <label>Remember For 30Days</label>
             </span>
             <span>
-              <a href="#"> Forget Password </a>
+              <Link to={"/ResetPassword"} >Forget Password </Link>
             </span>
           </div>
           <div>

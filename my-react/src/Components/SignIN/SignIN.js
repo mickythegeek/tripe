@@ -6,7 +6,7 @@ import EmailIcon from "../Assets/Icon (1).png";
 import Logomark from "../Assets/Logomark.png";
 import SignOut from "../Assets/SignOut.png";
 import { MdCopyright } from "react-icons/md";
-import { Link, Links } from "react-router-dom";
+import { Link,} from "react-router-dom";
 
 import "./SignIN.scss";
 
@@ -37,7 +37,7 @@ function SignIN() {
               <input type="checkbox" /> <label>Remember For 30Days</label>
             </span>
             <span>
-              <a href="#"> Forget Password </a>
+              <Link to={"/ResetPassword"}> Forget Password </Link>
             </span>
           </div>
           <div>
@@ -50,13 +50,13 @@ function SignIN() {
           </div>
 
           <p className="signuptext">
-            Don't have an account? <Link to={"/SignUp"}><span>Sign Up</span></Link>
-          </p>
+            Don't have an account? <Link to={"/"}><span>Sign Up</span></Link>
+          </p> 
 
           <div className="hrwithtext">
-            <hr />
+            <hr /> 
             <span>OR</span>
-            <hr />
+            <hr /> 
           </div>
 
           <div className="socialmedia">
