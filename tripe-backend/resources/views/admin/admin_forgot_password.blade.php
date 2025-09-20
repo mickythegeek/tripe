@@ -38,7 +38,7 @@
                                     <div class="alert alert-warning  text-center"
                                         role="alert">
                                         <p>Enter your email address and we'll
-                                        send you an email with a password reset link.</p>
+                                        send you a password reset link.</p>
                                         @if (session('success'))
                                         <div class="alert alert-success" style="width: 410px">
                                             <div class="alert-content">
