@@ -79,7 +79,7 @@ class AdminController extends Controller
         $admin->token = $token;
         $admin->update();
 
-        $pwdResetLink = url('admin/password-reset/' . $token . $request->email);
+        $pwdResetLink = url('admin/password-reset/' . $token . '/' . $request->email);
         $subject = "Password Reset";
 
         $info = [
@@ -91,6 +91,22 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', "A password reset link has been sent to your inbox. Make sure to check your spam too.");
 
-}
+    }
+    //End method
+
+    public function admin_reset_password($token, $email)
+    {
+        $admin = Admin::where('email', $email)->where('token', $token)->first();
+        if(!$admin)
+        {
+            return redirect()->route('admin_login')->with('error', "Token has expired. Please try again.");
+        }
+        else
+        {
+            return view('admin.reset_password', compact('token', 'email'));
+        }
+
+    }   
+
 }
 
