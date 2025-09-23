@@ -17,6 +17,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/forgot-password', [AdminController::class, 'forgot_password'])->name('admin_forgot_password');
     Route::post('/forgot-password', [AdminController::class, 'forgot_password_submit'])->name('admin_forgot_password_submit');
     Route::get('/password-reset/{token}/{email}', [AdminController::class, 'admin_reset_password']);
+    Route::post('/password-reset/{token}/{email}', [AdminController::class, 'admin_reset_password_submit'])->name('reset_password_submit');
+    
 
 
 });
