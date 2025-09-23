@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Mail\ResetPassword;
 use App\Models\Admin;
+use App\Mail\ResetPassword;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
@@ -106,7 +107,36 @@ class AdminController extends Controller
             return view('admin.reset_password', compact('token', 'email'));
         }
 
-    }   
+    }   //End Method
+
+    public function admin_reset_password_submit(Request $request, $token, $email)
+    {
+        
+
+        $request->validate([
+            'password' => ['required'],
+            'confirm_password' => ['required', 'same:password']
+
+        ]);
+
+        $admin = Admin::where('email', $email)->where('token', $token)->first();
+
+        if(Hash::check($request->password, $admin->password))
+        {
+            return redirect()->back()->with('error', 'Oops, Sorry! Your same old password can not work again.');
+        }
+        
+        $admin->password = Hash::make($request->password);
+
+        $admin->token = '';
+        $admin->update();
+
+        return redirect()->route('admin_login')->with('success', 'Young Maester, you can now log in with your new password.'); 
+
+
+        // dd($request->all());
+
+    }
 
 }
 
