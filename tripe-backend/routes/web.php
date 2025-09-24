@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Front\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/", [FrontendController::class, 'index'])->name('index');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 Route::middleware('Admin')->prefix('admin')->group(function ()
