@@ -20,7 +20,7 @@
 					<div class="side-nav side-nav-transparent side-nav-expand">
 						<div class="side-nav-header">
 							<div class="logo px-6">
-								<h3 style="margin: 10px 0; color: #222;">LMGAS</h3>
+								<h3 style="margin: 10px 0; color: #222;">TRIPE</h3>
 							</div>
 						</div>
 						<div class="side-nav-content relative side-nav-scroll">
@@ -128,7 +128,7 @@
 										<div class="dropdown-toggle" id="user-dropdown" data-bs-toggle="dropdown">
 											<div class="header-action-item flex items-center gap-2">
 												<span class="avatar avatar-circle" data-avatar-size="32" style="width: 32px">
-												<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy" alt=""></span>
+												<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-4.jpg') }}" loading="lazy" alt=""></span>
 												<div class="hidden md:block">
 													<div class="text-xs capitalize">Super Admin</div>
 													<div class="font-bold">{{Auth::guard('admin')->user()->username}}</div>
@@ -139,7 +139,7 @@
 											<li class="menu-item-header">
 												<div class="py-2 px-3 flex items-center gap-2">
 													<span class="avatar avatar-circle avatar-md">
-														<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy" alt="">
+														<img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-4.jpg') }}" loading="lazy" alt="">
 													</span>
 													<div>
 														<div class="font-bold text-gray-900 dark:text-gray-100">{{Auth::guard('admin')->user()->username}}</div>
@@ -187,7 +187,7 @@
                                         <div id="welcome-page-0" class="welcome-page-section h-full flex flex-col items-center justify-center">
                                             <div class="text-center">
                                                 <span class="avatar avatar-circle avatat-lg border-2 border-white dark:border-gray-800 shadow-lg" data-avatar-size="60" style="width: 150px; height: 150px;">
-                                                    <img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-1.jpg') }}" loading="lazy">
+                                                    <img class="avatar-img avatar-circle" src="{{ asset('backend/dash-assets/img/avatars/thumb-4.jpg') }}" loading="lazy">
                                                 </span>
                                                 <!-- <img src="{{ asset('backend/dash-assets/img/others/Laravel.png') }}" alt="Laravel Logo" class="mx-auto mb-8" style="width: 200px;"> -->
                                                 <h3 class="mb-2">{{Auth::guard('admin')->user()->username}}</h3>
