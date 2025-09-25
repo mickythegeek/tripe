@@ -25,7 +25,7 @@
                 <div class="navbar-brand logo">
                     <a class="navbar-caption fs-4 text-light ls-1 fw-bold"
                         href="#!"><i
-                            class="ri-registered-fill text-success fs-3 me-1"></i>RENOL
+                            class="ri-registered-fill text-success fs-3 me-1"></i>TRIPE
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button"
@@ -82,7 +82,7 @@
                             undo iaculis <br> feugiat magna mauris integer odio
                             an ipsum in placerat ligula risus augue</p>
                         <div class="main-btn mt-5">
-                            <a href="#!"
+                            <a href="{{route('user_register')}}"
                                 class="btn btn-success btn-lg text-dark fw-semibold me-2">Registration
                                 <i class="ri-arrow-right-line ms-2"></i></a>
                             <a href="#!" class="ms-4 text-white">See How It Work
@@ -912,7 +912,7 @@
                     <div class="logo">
                         <a class="fs-4 text-light ls-1 fw-bold"
                             href="#!"></i><i
-                                class="ri-registered-fill text-success fs-3 me-1"></i>RENOL
+                                class="ri-registered-fill text-success fs-3 sme-1"></i>TRIPE
                         </a>
                     </div>
                     <div class="d-flex mt-4">
@@ -921,7 +921,7 @@
                     </div>
                     <div class="d-flex mt-3">
                         <i class="ri-mail-send-fill text-light"></i>
-                        <a href="#!" class="text-white-50 ms-3 fs-xl"></i>- supprot@gmail.com</a>
+                        <a href="#!" class="text-white-50 ms-3 fs-xl"></i>- support@tripe.com</a>
                     </div>
                     <div class="footer-icon-3 ms-lg-auto me-lg-5">
                         <ul class="d-flex mt-4">
