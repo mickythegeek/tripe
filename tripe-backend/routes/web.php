@@ -34,3 +34,4 @@ Route::prefix('admin')->group(function(){
 
 // User Route
 Route::get('/register', [UserController::class, 'register'])->name('user_register');
+Route::get('/register_submit', [UserController::class, 'register_submit'])->name('user_register_submit');

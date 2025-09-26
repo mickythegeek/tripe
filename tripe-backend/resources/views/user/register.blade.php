@@ -37,7 +37,7 @@
                                             <!-- <p>And lets get started with your free trial</p> -->
                                         </div>
                                         <div>
-                                            <form action="#">
+                                            <form action="{{ route('register_submit') }}" method="POST">
                                                 <div class="form-container vertical">
                                                     <div class="form-item vertical">
                                                         <label class="form-label mb-2">First Name</label>
