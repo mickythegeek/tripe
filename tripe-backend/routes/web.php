@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Front\FrontendController;
 
 
-Route::get("/", [FrontendController::class, 'index'])->name('index');
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -33,5 +33,7 @@ Route::prefix('admin')->group(function(){
 
 
 // User Route
+Route::get("/", [FrontendController::class, 'index'])->name('index');
 Route::get('/register', [UserController::class, 'register'])->name('user_register');
-Route::get('/register_submit', [UserController::class, 'register_submit'])->name('user_register_submit');
+Route::post('/register_submit', [UserController::class, 'register_submit'])->name('user_register_submit');
+Route::get('/login', [UserController::class, 'login'])->name('user_login');
