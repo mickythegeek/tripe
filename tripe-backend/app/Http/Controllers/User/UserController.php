@@ -11,4 +11,11 @@ class UserController extends Controller
     {
         return view("user.register");
     }
+    //End Method
+
+    public function register_submit(Request$request)
+    {
+        dd($request->all());
+
+    }
 }
