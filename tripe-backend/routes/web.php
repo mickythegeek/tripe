@@ -13,13 +13,12 @@ use App\Http\Controllers\Front\FrontendController;
 // });
 
 
-Route::middleware('Admin')->prefix('admin')->group(function ()
-{
+Route::middleware('Admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
 });
 
 // Admin Routes
-Route::prefix('admin')->group(function(){
+Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminController::class, 'login'])->name('admin_login');
     Route::post('/login_submit', [AdminController::class, 'login_submit'])->name('admin_login_submit');
 
@@ -37,3 +36,5 @@ Route::get("/", [FrontendController::class, 'index'])->name('index');
 Route::get('/register', [UserController::class, 'register'])->name('user_register');
 Route::post('/register_submit', [UserController::class, 'register_submit'])->name('user_register_submit');
 Route::get('/login', [UserController::class, 'login'])->name('user_login');
+Route::get('/verify-email/{token}/{email}', [UserController::class, 'verify_email'])->name('verify_email');
+// Route::post('/verify_email/{token}/{email}', [UserController::class, 'verify_email_submit'])->name('verify_email_submit');

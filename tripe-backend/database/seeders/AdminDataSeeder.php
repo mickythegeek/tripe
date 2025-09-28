@@ -14,7 +14,9 @@ class AdminDataSeeder extends Seeder
      */
     public function run(): void
     {
-        Admin::updateOrCreate([
+        Admin::updateOrCreate(
+            ['email' => env('ADMIN_EMAIL')],
+            [
             'username' => env('ADMIN_USERNAME'),
             'email' => env('ADMIN_EMAIL'),
             'password' => Hash::make(env('ADMIN_PASSWORD')),
