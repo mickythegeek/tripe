@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use Hash;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Request;
+use App\Mail\EmailVerification;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -17,6 +19,7 @@ class UserController extends Controller
 
     public function register_submit(Request $request)
     {
+        // Input Validation 
         
         $request->validate([
             'firstName' => ['required'],
@@ -26,21 +29,59 @@ class UserController extends Controller
             'confirmPassword' => ['required', 'same:password']
 
         ]);
-        // dd($request->all());
+
+        // Generate token
+        $token = hash('sha256', time());
 
         $inputs = $request->all();
         $data = [
             'name' => $inputs['firstName'] . ' ' . $inputs['lastName'],
             'email' => $inputs['email'],
             'password' => Hash::make($inputs['password']),
+            'token' => $token,
+            'status' => 0,
         ];
-
+        // Create new user
         $user = User::create($data);
 
-        return redirect()->route('user_login')->with('success', 'Registration successful!');
+
+        // Send verification mail
+        $verifyLink = url('verify-email/' . $token . '/' . $inputs['email']);
+
+        $subject = "Verify Your Account";
+
+        $info = [
+            'name'=> $user['name'],
+            'verifyLink' => $verifyLink
+        ];
+        Mail::to($user->email)->send(new EmailVerification($subject, $info));
+
+        
+
+
+        return redirect()->route('user_login')->with('info', 'Please check your email to verify your account');
 
     }
     //End Method
+
+    public function verify_email($token, $email)
+    {
+        $user = User::where('token', $token)->where('email', $email)->where('status', 0)->first();
+
+        if (!$user)
+        {
+            return redirect()->route('user_login')->with('error', 'Invalid Verification Link');
+        }
+
+        $user->status = 1;
+        $user->token = null;
+        $user->save();
+
+        return redirect()->route('user_login')->with('success', 'Email verified! You can now login.');
+    }
+    // End Method
+
+
 
     public function login()
     {

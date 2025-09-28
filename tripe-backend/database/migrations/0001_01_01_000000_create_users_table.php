@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('status')->default(0)->comment('0=pending, 1=active');
             $table->string('password');
             $table->timestamps();
-            // $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             
             // $table->rememberToken();
             
