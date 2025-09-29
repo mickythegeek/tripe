@@ -41,7 +41,8 @@
                                         <p>Please enter your credentials to Login!</p>
                                     </div>
                                     <div>
-                                        <form action="#">
+                                        <form action="{{route('login_submit')}}" method="POST">
+                                            @csrf
                                             <div class="form-container vertical">
                                                 @if (session('success'))
                                                     <div class="alert alert-success" style="width: 410px">
