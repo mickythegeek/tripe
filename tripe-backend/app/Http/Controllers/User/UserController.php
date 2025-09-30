@@ -120,6 +120,12 @@ class UserController extends Controller
         } 
     }
     //End Method
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        return redirect()->route('user_login')->with('success', 'You logged out successfully!');
+
+    }
 
 
 

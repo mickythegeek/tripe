@@ -39,4 +39,6 @@ Route::get('/login', [UserController::class, 'login'])->name('user_login');
 Route::get('/verify-email/{token}/{email}', [UserController::class, 'verify_email'])->name('verify_email');
 Route::post('/login_submit', [UserController::class, 'login_submit'])->name('login_submit');
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 // Route::post('/verify_email/{token}/{email}', [UserController::class, 'verify_email_submit'])->name('verify_email_submit');
