@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\EmailVerification;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -59,7 +60,7 @@ class UserController extends Controller
         
 
 
-        return redirect()->route('user_login')->with('info', 'Please check your email to verify your account');
+        return redirect()->route('user_login')->with('success', 'Please check your email to verify your account');
 
     }
     //End Method
@@ -81,10 +82,46 @@ class UserController extends Controller
     }
     // End Method
 
-
-
     public function login()
     {
         return view("user.login");
     }
+    // End method
+
+        public function dashboard()
+    {
+        return view('user.dashboard');
+    }
+
+    
+
+    public function login_submit(Request $request)
+    {
+       
+        $request->validate([
+            'email' => ['required'],
+            'password' => ['required']
+        ]);
+
+        // dd($request->all());
+
+        $inputs = $request->all();
+
+        $data = [
+            'email' => $inputs['email'],
+            'password' => $inputs['password']
+        ];
+
+        if(Auth::guard('web')->attempt($data))
+        {
+            return redirect()->route('dashboard');
+        } else{
+            return redirect()->route('user_login')->with('error','Invalid credentials. Please try again!');
+        } 
+    }
+    //End Method
+
+
+
+
 }
