@@ -60,7 +60,7 @@ class UserController extends Controller
         
 
 
-        return redirect()->route('user_login')->with('success', 'Please check your email to verify your account');
+        return redirect()->route('user_register')->with('success', 'Please check your email to verify your account');
 
     }
     //End Method
