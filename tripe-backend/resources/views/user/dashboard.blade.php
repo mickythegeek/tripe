@@ -85,12 +85,12 @@
                                                 loading="lazy">
                                         </span>
                                         <!-- <img src="assets/img/others/Laravel.png" alt="Laravel Logo" class="mx-auto mb-8" style="width: 200px;"> -->
-                                        <h3 class="mb-2">Welcome on board, {{{Auth::guard('web')->user()->name}}}!</h3>
-                                        <p class="text-base">{{{Auth::guard('web')->user()->email}}}</p>
+                                        <h3 class="mb-2">Welcome on board, {{Auth::guard('web')->user()->username}}<!</h3>
+                                        <p class="text-base">{{Auth::guard('web')->user()->username}}<</p>
 
                                     </div>
                                 </div>
-
+                                                                                                                                                                                               
                             </div>
                         </div>
                     </main>
