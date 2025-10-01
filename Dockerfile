@@ -26,6 +26,8 @@ WORKDIR /var/www
 # Copy existing application directory
 COPY . .
 
+RUN ls -l /var/www
+
 # Install application dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
