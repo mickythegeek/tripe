@@ -16,6 +16,9 @@ use App\Http\Controllers\Front\FrontendController;
 Route::middleware('Admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
 });
+Route::middleware(['user'])->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+});
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
@@ -38,5 +41,6 @@ Route::post('/register_submit', [UserController::class, 'register_submit'])->nam
 Route::get('/login', [UserController::class, 'login'])->name('user_login');
 Route::get('/verify-email/{token}/{email}', [UserController::class, 'verify_email'])->name('verify_email');
 Route::post('/login_submit', [UserController::class, 'login_submit'])->name('login_submit');
-Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 // Route::post('/verify_email/{token}/{email}', [UserController::class, 'verify_email_submit'])->name('verify_email_submit');
