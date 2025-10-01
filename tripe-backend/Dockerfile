@@ -23,18 +23,22 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Copy existing application directory
-COPY . .
-
-RUN ls -l /var/www
+# Copy composer files first
+COPY composer.json composer.lock ./
 
 # Install application dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
 
-# Generate optimized autoload files
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+# Copy the rest of the application
+COPY . .
+
+# Now run the post-install scripts
+RUN composer dump-autoload --optimize --no-dev
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 /var/www/storage \
+    && chmod -R 755 /var/www/bootstrap/cache
 
 # Expose port
 EXPOSE 8080
