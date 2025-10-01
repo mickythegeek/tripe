@@ -143,7 +143,7 @@
                                                 <div class="flex justify-between mb-6">
 
                                                     <a class="text-primary-600 hover:underline"
-                                                        href="forget-password.html">Forgot Password?</a>
+                                                        href="{{ route('forgot_password')}}">Forgot Password?</a>
                                                 </div>
                                                 <button class="btn btn-solid w-full" type="submit">Login</button>
                                                 <div class="mt-4 text-center">
