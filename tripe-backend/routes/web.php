@@ -42,5 +42,9 @@ Route::get('/login', [UserController::class, 'login'])->name('user_login');
 Route::get('/verify-email/{token}/{email}', [UserController::class, 'verify_email'])->name('verify_email');
 Route::post('/login_submit', [UserController::class, 'login_submit'])->name('login_submit');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/forgot-password', [UserController::class, 'forgot_password'])->name('forgot_password');
+Route::post('/forgot-password', [UserController::class, 'forgot_password_submit'])->name('forgot_password_submit');
+Route::get('/password-reset/{token}/{email}', [UserController::class, 'reset_password'])->name('reset_password');
+Route::post('/password-reset/{token}/{email}', [UserController::class, 'reset_password_submit'])->name('user_reset_password_submit');
 
 // Route::post('/verify_email/{token}/{email}', [UserController::class, 'verify_email_submit'])->name('verify_email_submit');
