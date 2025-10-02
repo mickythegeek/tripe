@@ -35,6 +35,10 @@ COPY . .
 # Now run the post-install scripts
 RUN composer dump-autoload --optimize --no-dev
 
+# Clear caches
+RUN php artisan config:clear
+RUN php artisan cache:clear
+
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage \
