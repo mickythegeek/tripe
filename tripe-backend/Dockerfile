@@ -35,9 +35,6 @@ COPY . .
 # Now run the post-install scripts
 RUN composer dump-autoload --optimize --no-dev
 
-# Clear caches
-RUN php artisan config:clear
-RUN php artisan cache:clear
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www \
@@ -47,5 +44,9 @@ RUN chown -R www-data:www-data /var/www \
 # Expose port
 EXPOSE 8080
 
+# Run cache clearing and then start server
+CMD php artisan config:clear && \
+    php artisan cache:clear && \
+
 # Run migrations and start server
-CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
+php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
