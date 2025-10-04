@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,6 +48,10 @@ return [
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
         ],
+
+        'sendgrid' => [
+        'transport' => 'sendgrid',
+    ],
 
         'ses' => [
             'transport' => 'ses',

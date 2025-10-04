@@ -58,6 +58,10 @@
                             <a class="nav-link" href="#contacts">Contact
                                 Us</a>
                         </li>
+                        <li class="nav-item ">
+
+                            <a class="nav-link" href="{{route('user_login')}}">Log In</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -74,19 +78,16 @@
                 <div class="col-lg-8 align-self-start">
                     <div class="text-center">
                         <h1 class="display-3 text-light fw-bold lh-base">
-                            Business Skyrocketing With <span
-                                class="text-success"> Digital Marketing
+                            Elevate Customer Support with <span
+                                class="text-success"> Tripe Live Chat Bot
                             </span></h1>
-                        <p class="text-white-50 mt-3">Feugiat primis ligula
-                            risus auctor augue egestas and mauris viverra tortor
-                            undo iaculis <br> feugiat magna mauris integer odio
-                            an ipsum in placerat ligula risus augue</p>
+                        <p class="text-white-50 mt-3">Tripe is a powerful SaaS platform offering real-time messaging, seamless bot-to-human handoff, and easy website integration. Deliver instant, intelligent support to your customers—anytime, anywhere.</p>
                         <div class="main-btn mt-5">
                             <a href="{{route('user_register')}}"
-                                class="btn btn-success btn-lg text-dark fw-semibold me-2">Registration
+                                class="btn btn-success btn-lg text-dark fw-semibold me-2">Get Started
                                 <i class="ri-arrow-right-line ms-2"></i></a>
-                            <a href="#!" class="ms-4 text-white">See How It Work
-                                !</a>
+                            <a href="#!" class="ms-4 text-white">Learn More
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -102,22 +103,24 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="title-sm">
-                        <span>About Us</span>
+                        <span>About Tripe</span>
                     </div>
                     <div class="section-title-border mt-3 m-0"></div>
                     <div class="about-title mt-4">
-                        <h2 class="fw-semibold text-primary lh-base">Best For
-                            Organize And Customize Easily</h2>
-                        <p>There are many variations of passages of Lorem Ipsum
-                            available, but the majority have suffered alteration
-                            in some form, by injected humour, or randomised
-                            words which don't look even slightly believable. If
-                            you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing
-                            hidden in the middle of text.</p>
+                        <h2 class="fw-semibold text-primary lh-base">Live Chat Bot SaaS for Modern Customer Engagement</h2>
+                        <p>
+                        Tripe empowers businesses to connect with website visitors in real time through intelligent chatbots and smooth transitions to human agents when needed. Our platform is designed for effortless integration, robust automation, and personalized support—helping you boost satisfaction, resolve queries faster, and grow your business.
+                    </p>
+                    <ul>
+                        <li>⚡ Real-time messaging and notifications</li>
+                        <li>🤖 Smart bot-to-human handoff</li>
+                        <li>🔗 Easy website integration</li>
+                        <li>📈 Analytics and conversation history</li>
+                        <li>🔒 Secure and scalable SaaS infrastructure</li>
+                    </ul>
                         <div class="about-btn mt-4">
                             <a href="#!"
-                                class="btn btn-primary fw-semibold">Show More <i
+                                class="btn btn-primary fw-semibold">See Features <i
                                     class="ri-arrow-right-line"></i></a>
                         </div>
                     </div>
