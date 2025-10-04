@@ -62,7 +62,7 @@
                                                     </div>
                                                 @endif
                                                 @if (session('error'))
-                                                    <div class="alert alert-success" style="width: 410px">
+                                                    <div class="alert alert-danger" style="width: 410px">
                                                         <div class="alert-content">
                                                             <span class="alert-icon">
                                                                 <svg stroke="currentColor" fill="currentColor"
