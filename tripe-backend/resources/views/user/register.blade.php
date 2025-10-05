@@ -125,7 +125,7 @@
                                                     <div>
                                                         <span class="input-wrapper">
                                                             <input class="input pr-8" type="password" name="password" id="password-input"
-                                                                placeholder="Password">
+                                                                placeholder="Minimum 8 characters">
                                                             <div class="input-suffix-end">
                                                                 <span class="cursor-pointer text-xl"
                                                                     id="toggle-password">
