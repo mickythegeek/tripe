@@ -37,7 +37,7 @@
                                 <div class="dropdown">
                                     <div class="dropdown-toggle" id="user-dropdown" data-bs-toggle="dropdown">
                                         <div class="header-action-item flex items-center gap-8">
-                                            <div class="hidden md:block">
+                                            <div class="hidden sm:block">
                                                 <a href="{{route('logout')}}" class="font-bold">Logout</a>
                                             </div>
                                         </div>
