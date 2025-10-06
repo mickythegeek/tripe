@@ -205,6 +205,88 @@ class UserController extends Controller
 
     }
 
+    public function api_register(Request $request)
+    {
+        $request->validate([
+            'firstName' => ['required'],
+            'lastName' => ['required'],
+            'email' => ['required', 'email', 'unique:users'],
+            'password' => ['required', 'min:8'],
+            'confirmPassword' => ['required', 'same:password']
+        ]);
+
+        $user = User::create([
+            'name' => $request->firstName . " " . $request->lastName,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'status' => 1
+        ]);
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User registered successfully.',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ]);
+
+    }
+
+
+    public function api_login(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid Credentials. Try again!'
+            ], 401);
+        }
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User logged in successfully.',
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'user' => $user
+        ]);
+    }
+    // End method
+
+
+    public function api_dashboard(Request $request)
+    {
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Welcome to your dashboard.',
+            'user' => $request->user(),
+        ]);
+    }
+
+    public function api_logout(Request $request)
+    {
+        request()->user()->tokens()->delete();
+
+        return response() ->json([
+            'status' => 'success',
+            'message' => 'You logged out succesfull1'
+        ]);
+    }
+
+
+
+
+
 
 
 
