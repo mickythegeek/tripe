@@ -270,7 +270,7 @@ class UserController extends Controller
             'status' => 'success',
             'message' => 'Welcome to your dashboard.',
             'user' => $request->user(),
-        ]);
+        ], 200);
     }
 
     public function api_logout(Request $request)

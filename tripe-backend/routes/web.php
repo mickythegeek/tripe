@@ -17,7 +17,6 @@ Route::middleware('Admin')->prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin_dashboard');
 });
 Route::middleware(['user'])->group(function () {
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });
 
 // Admin Routes
@@ -46,5 +45,7 @@ Route::get('/forgot-password', [UserController::class, 'forgot_password'])->name
 Route::post('/forgot-password', [UserController::class, 'forgot_password_submit'])->name('forgot_password_submit');
 Route::get('/password-reset/{token}/{email}', [UserController::class, 'reset_password'])->name('reset_password');
 Route::post('/password-reset/{token}/{email}', [UserController::class, 'reset_password_submit'])->name('user_reset_password_submit');
+Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
 
 // Route::post('/verify_email/{token}/{email}', [UserController::class, 'verify_email_submit'])->name('verify_email_submit');

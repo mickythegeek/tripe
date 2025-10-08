@@ -10,6 +10,17 @@
 
     <!-- Core CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">
+    <script>
+        (function() {
+            const token = localStorage.getItem('auth_token');
+            if (!token) {
+                // Redirect immediately if no token
+                window.location.href = '/login';
+            }
+        })();
+    </script>
+
+            
 </head>
 
 <body>
@@ -37,7 +48,7 @@
                                 <div class="dropdown">
                                     <div class="dropdown-toggle" id="user-dropdown" data-bs-toggle="dropdown">
                                         <div class="header-action-item flex items-center gap-8">
-                                                <a href="{{route('logout')}}" class="font-bold">Logout</a>
+                                            <a href="#" id="logout-btn" class="font-bold">Logout</a>
                                         </div>
                                     </div>
 
@@ -79,16 +90,15 @@
                                             class="avatar avatar-circle avatat-lg border-2 border-white dark:border-gray-800 shadow-lg"
                                             data-avatar-size="60"
                                             style="width: 150px; height: 150px; min-width: 60px; line-height: 60px;">
-                                            <img class="avatar-img avatar-circle" src="{{ asset('frontend/assets/img/avatars/Style=Style 22.jpg') }}"
+                                            <img class="avatar-img avatar-circle"
+                                                src="{{ asset('frontend/assets/img/avatars/Style=Style 22.jpg') }}"
                                                 loading="lazy">
                                         </span>
                                         <!-- <img src="assets/img/others/Laravel.png" alt="Laravel Logo" class="mx-auto mb-8" style="width: 200px;"> -->
-                                        <h3 class="mb-2">Welcome on board, {{Auth::guard('web')->user()->name}}<!</h3>
-                                        <p class="text-base">{{Auth::guard('web')->user()->email}}</p>
-
+                                        <div id="user-info"></div>
                                     </div>
                                 </div>
-                                                                                                                                                                                               
+
                             </div>
                         </div>
                     </main>
@@ -106,6 +116,81 @@
         </div>
     </div>
     </div>
+
+
+    <script>
+        // Confirm if user is logged in
+
+        // const token = localStorage.getItem('auth_token');
+
+        // if (token) {
+        //     loadDashboard();
+        // } else {
+        //     window.location.href = '/login';
+        // }
+
+
+        // Fetch dashboard data from API
+
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/api/dashboard', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+
+                    document.getElementById('user-info').innerHTML = `
+                    <h3 class="mb-2">Welcome on board, ${data.user.name}<!</h3>
+                    <p class="text-base">${data.user.email}</p> `;
+                } else if (response.status === 401) {
+                    // Token might be invalid or expired
+                    localStorage.removeItem('auth_token');
+                    localStorage.removeItem('user');
+                    window.location.href = '/login';
+                } else {
+                    document.getElementById('user-info').innerHTML = `
+                    <p>Failed to load dashboard data</p>`
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('user-info').innerHTML = 'An error occurred while loading data';
+            }
+        }
+
+        // Logout functionality
+        const logoutBtn = document.getElementById('logout-btn');
+
+        logoutBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            try {
+                await fetch('/api/logout', {
+                    method: 'POST',
+                    headers: {
+                        'Authrization': `Bearer ${token}`,
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+            } catch (error) {
+                console.error('Logout error:', error);
+            } finally {
+                // Clear the localstorage and redirect to login
+
+                localStorage.removeItem('auth_token');
+                localStorage.removeItem('user');
+                window.location.href = '/login';
+            }
+        })
+    </script>
 </body>
 
 </html>
