@@ -6,7 +6,7 @@ use App\Http\Controllers\User\UserController;
 
 // Public API routes
 
-Route::post('/register_submit', [UserController::class, 'api_register']);
+Route::post('/register_submit', [UserController::class, 'api_register'])->name('api_register');
 Route::post('/login_submit', [UserController::class, 'api_login'])->name('api_login');
 
 // Protected API routes

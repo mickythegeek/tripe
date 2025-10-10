@@ -107,7 +107,7 @@
                                                 <div class="mt-4 text-center">
                                                     <span>Don't have an account yet?</span>
                                                     <a class="text-primary-600 hover:underline"
-                                                        href="{{ route('user_register') }}">Register</a>
+                                                        href="{{ route('api_register') }}">Register</a>
                                                 </div>
                                             </div>
                                         </form>

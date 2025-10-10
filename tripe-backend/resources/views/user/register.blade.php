@@ -41,7 +41,7 @@
                                         <!-- <p>And lets get started with your free trial</p> -->
                                     </div>
                                     <div>
-                                        <form action="{{ route('user_register_submit') }}" method="POST">
+                                        <form action="{{ route('api_register') }}" method="POST" id="register-form">
                                             @csrf
                                             @if (session('success'))
                                                 <div class="alert alert-success" style="width: 410px">

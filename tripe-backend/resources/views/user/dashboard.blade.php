@@ -10,15 +10,15 @@
 
     <!-- Core CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/assets/css/style.css') }}">
-    <script>
+        <script>
         (function() {
-            const token = localStorage.getItem('auth_token');
-            if (!token) {
-                // Redirect immediately if no token
+            if(!localStorage.getItem('auth_token')){
+                 // Redirect immediately if no token
                 window.location.href = '/login';
-            }
+            }           
         })();
     </script>
+
 
             
 </head>
@@ -121,16 +121,10 @@
     <script>
         // Confirm if user is logged in
 
-        // const token = localStorage.getItem('auth_token');
+        const token = localStorage.getItem('auth_token');
+        loadDashboard();
 
-        // if (token) {
-        //     loadDashboard();
-        // } else {
-        //     window.location.href = '/login';
-        // }
-
-
-        // Fetch dashboard data from API
+       // Fetch dashboard data from API
 
         async function loadDashboard() {
             try {
@@ -148,7 +142,7 @@
                     console.log(data);
 
                     document.getElementById('user-info').innerHTML = `
-                    <h3 class="mb-2">Welcome on board, ${data.user.name}<!</h3>
+                    <h3 class="mb-2">Welcome on board, ${data.user.name}!</h3>
                     <p class="text-base">${data.user.email}</p> `;
                 } else if (response.status === 401) {
                     // Token might be invalid or expired
@@ -175,7 +169,7 @@
                 await fetch('/api/logout', {
                     method: 'POST',
                     headers: {
-                        'Authrization': `Bearer ${token}`,
+                        'Authorization': `Bearer ${token}`,
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
