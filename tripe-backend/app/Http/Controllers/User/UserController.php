@@ -215,23 +215,38 @@ class UserController extends Controller
             'confirmPassword' => ['required', 'same:password']
         ]);
 
+        // Generate token for email verification
+        $verification_token = hash('sha256', time());  
+
+
+
+
         $user = User::create([
             'name' => $request->firstName . " " . $request->lastName,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'status' => 1
+            'token' => $verification_token,
+            'status' => 0
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Send verificaition mail
+        $verifyLink = url('verify-email/' . $verification_token . '/' . $request->email);
+
+        $subject = "Verify Your Account";
+
+        $info = [
+            'name' => $user['name'],
+            'verifyLink' => $verifyLink
+        ];
+        Mail::to($user->email)->send(new EmailVerification($subject, $info));
+
+        // $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'status' => 'success',
-            'message' => 'User registered successfully.',
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'user' => $user
-        ]);
-
+            'message' => 'User registered successfully. Please check your email to verify your account.',
+            'verifyLink' => $verifyLink,
+        ], 201);
     }
 
 
