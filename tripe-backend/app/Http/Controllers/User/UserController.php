@@ -246,7 +246,7 @@ class UserController extends Controller
             'status' => 'success',
             'message' => 'User registered successfully. Please check your email to verify your account.',
             'verifyLink' => $verifyLink,
-        ], 201);
+        ]);
     }
 
 
