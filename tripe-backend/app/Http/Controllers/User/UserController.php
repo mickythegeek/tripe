@@ -294,7 +294,7 @@ class UserController extends Controller
 
         return response() ->json([
             'status' => 'success',
-            'message' => 'You logged out succesfull1'
+            'message' => 'You logged out succesfully.'
         ]);
     }
 
