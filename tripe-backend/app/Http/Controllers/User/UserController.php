@@ -205,6 +205,39 @@ class UserController extends Controller
 
     }
 
+
+    /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Register a new user",
+     *     tags={"User Authentication"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="User registration details",
+     *         @OA\JsonContent(
+     *             required={"firstName", "lastName", "email", "password", "confirmPassword"},
+     *             @OA\Property(property="firstName", type="string", example="Jane"),
+     *             @OA\Property(property="lastName", type="string", example="Doe"),
+     *             @OA\Property(property="email", type="string", format="email", example="jane.doe@tripe.com"),
+     *             @OA\Property(property="password", type="string", format="password", minLength=8, example="password123"),
+     *             @OA\Property(property="confirmPassword", type="string", format="password", minLength=8, example="password123")
+     * )
+     * ),
+     * @OA\Response(
+     *    response=201,
+     *    description="Successful registration",
+     *    @OA\JsonContent(
+     *        @OA\Property(property="status", type="string", example="success"),
+     *        @OA\Property(property="message", type="string", example="User registered successfully. Please check your email to verify your account."),
+     *        @OA\Property(property="verifyLink", type="string", format="url")
+     * )
+     * ),
+     * @OA\Response(
+     *     response=422,
+     *     description="Validation errors"
+     * )
+     * )
+     */
     public function api_register(Request $request)
     {
         $request->validate([
