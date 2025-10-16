@@ -18,8 +18,8 @@ namespace App\Http\Controllers;
  * )
  * 
  * @OA\Server(
- *     url="http://localhost:8000/api",
- *     description="Tripe API Server"
+ *     url="https://tripe-pgs8.onrender.com/api",
+ *     description="Tripe API Server (Prod)"
  * )
  * 
  * @OA\SecurityScheme(
