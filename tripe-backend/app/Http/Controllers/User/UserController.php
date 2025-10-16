@@ -208,19 +208,25 @@ class UserController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/api/register",
+     *     path="/register",
      *     summary="Register a new user",
      *     tags={"User Authentication"},
      *     @OA\RequestBody(
      *         required=true,
      *         description="User registration details",
-     *         @OA\JsonContent(
-     *             required={"firstName", "lastName", "email", "password", "confirmPassword"},
-     *             @OA\Property(property="firstName", type="string", example="Jane"),
-     *             @OA\Property(property="lastName", type="string", example="Doe"),
-     *             @OA\Property(property="email", type="string", format="email", example="jane.doe@tripe.com"),
-     *             @OA\Property(property="password", type="string", format="password", minLength=8, example="password123"),
-     *             @OA\Property(property="confirmPassword", type="string", format="password", minLength=8, example="password123")
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 required={"firstName", "lastName", "email", "password", "confirmPassword"},
+     *                 @OA\Property(property="firstName", type="string", example="Jane"),
+     *                 @OA\Property(property="lastName", type="string", example="Doe"),
+     *                 @OA\Property(property="email", type="string", format="email", example="jane.doe@tripe.com"),
+     *                 @OA\Property(property="password", type="string", format="password", minLength=8, example="password123"),
+     *                 @OA\Property(property="confirmPassword", type="string", format="password", minLength=8, example="password123")
+     * 
+     * 
+     * )
+     *             
      * )
      * ),
      * @OA\Response(
@@ -283,6 +289,50 @@ class UserController extends Controller
     }
 
 
+
+
+    /**
+     * @OA\Post(
+     *     path="/login",
+     *     summary="Login a user",
+     *     tags={"User Authentication"},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         description="User login details",
+     *          @OA\MediaType(
+     *              mediaType="application/x-www-form-urlencoded",
+     *              @OA\Schema(
+     *                  required={"email", "password"},
+     *                  @OA\Property(property="email", type="string", format="email"),
+     *                  @OA\Property(property="password", type="string", format="password")
+     * 
+     * )
+     *            
+     * ) 
+     * ),
+     * @OA\Response(
+     *     response=200,
+     *     description="Successful login",
+     *     @OA\JsonContent(
+     *        @OA\Property(property="status", type="string", example="success"),
+     *        @OA\Property(property="message", type="string", example="User logged in successfully."),
+     *        @OA\Property(property="access_token", type="string"),
+     *        @OA\Property(property="token_type", type="string", example="Bearer"),
+     *        @OA\Property(property="user", type="object",
+     *            @OA\Property(property="id", type="integer"),
+     *            @OA\Property(property="name", type="string"),
+     *            @OA\Property(property="email", type="string", format="email"),
+     *            @OA\Property(property="created_at", type="string", format="date-time"),
+     *            @OA\Property(property="updated_at", type="string", format="date-time")
+     *            )
+     * )
+     * ),
+     * @OA\Response(
+     *     response=401,
+     *     description="Invalid credentials")
+     * )
+     * 
+     */
     public function api_login(Request $request)
     {
         $request->validate([
@@ -312,6 +362,34 @@ class UserController extends Controller
     // End method
 
 
+    /**
+     * @OA\Get(
+     *     path="/dashboard",
+     *     summary="Get authenticated user data",
+     *     tags={"User Profile"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="Welcome to your dashboard."),
+     *             @OA\Property(property="user", type="object",
+     *                 @OA\Property(property="id", type="integer"),
+     *                 @OA\Property(property="name", type="string"),
+     *                 @OA\Property(property="email", type="string", format="email"),
+     *                 @OA\Property(property="created_at", type="string", format="date-time"),
+     *                 @OA\Property(property="updated_at", type="string", format="date-time")
+     * )
+     * )
+     * ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated")
+     * )
+     * )
+ */
+
     public function api_dashboard(Request $request)
     {
         return response()->json([
@@ -320,6 +398,27 @@ class UserController extends Controller
             'user' => $request->user(),
         ], 200);
     }
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Logout the authenticated user",
+     *     tags={"User Authentication"},
+     *     security={{"bearerAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful logout",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="status", type="string", example="success"),
+     *             @OA\Property(property="message", type="string", example="User logged out successfully.")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthenticated"
+     *     )
+     * )
+     */
+
 
     public function api_logout(Request $request)
     {
